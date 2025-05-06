@@ -22,6 +22,8 @@ import { useDispatch } from "react-redux";
 import { setLogin } from "state";
 import SplashScreen from "components/SplashScreen";
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 // Validation schemas
 const registerSchema = yup.object().shape({
   firstName: yup.string().required("required"),
@@ -68,7 +70,7 @@ const Form = () => {
       formData.append(key, value);
     });
     formData.append("picturePath", values.picture.name);
-    const response = await fetch("http://localhost:3001/auth/register", {
+    const response = await fetch(`${API_URL}/auth/register`, {
       method: "POST",
       body: formData,
     });
@@ -79,7 +81,7 @@ const Form = () => {
   };
 
   const login = async (values, actions) => {
-    const response = await fetch("http://localhost:3001/auth/login", {
+    const response = await fetch(`${API_URL}/auth/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(values),
