@@ -32,11 +32,6 @@ app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
 app.use("/assets", express.static(path.join(__dirname, "public/assets")));
 
-/* ROOT ROUTE FOR TESTING */
-app.get('/', (req, res) => {
-  res.send('Welcome to my API!');
-});
-
 /* FILE STORAGE */
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -65,6 +60,7 @@ mongoose
     useUnifiedTopology: true,
   })
   .then(() => {
+    console.log('MongoDB Connected Successfully!');
     app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
 
     /* ADD DATA ONE TIME */
