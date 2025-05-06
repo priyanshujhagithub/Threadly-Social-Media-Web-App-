@@ -56,7 +56,7 @@ const Navbar = () => {
             },
           }}
         >
-          Sociopedia
+          Threadly
         </Typography>
         {isNonMobileScreens && (
           <FlexBetween
